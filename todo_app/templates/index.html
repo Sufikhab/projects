@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Flask To-Do List</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
+
+  <div class="glass max-w-md w-full p-6 space-y-6 text-center">
+    <h1 class="text-3xl font-bold text-cyan-400">📝 To-Do List</h1>
+
+    <!-- Add task form -->
+    <form action="/add" method="POST" class="flex gap-2">
+      <input
+        name="task"
+        placeholder="Enter a task..."
+        class="flex-1 p-3 rounded-xl text-black focus:outline-none focus:ring-2 focus:ring-cyan-500"
+        required
+      />
+      <button class="glow-btn">Add</button>
+    </form>
+
+    <!-- Task list with checkboxes -->
+    <ul class="text-left space-y-2">
+      {% for id, content, completed in tasks %}
+        <li class="flex items-center justify-between bg-gray-800/50 p-3 rounded-xl">
+          <form action="/toggle/{{ id }}" method="POST" class="flex items-center gap-2 w-full">
+            <input type="checkbox" onchange="this.form.submit()" {% if completed %}checked{% endif %}>
+            <span class="{% if completed %}line-through text-gray-400{% endif %} flex-grow">
+              {{ content }}
+            </span>
+          </form>
+          <a href="/delete/{{ id }}" class="text-red-400 hover:text-red-300 font-bold">✖</a>
+        </li>
+      {% else %}
+        <li class="text-gray-400">No tasks added yet.</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+</body>
+</html>

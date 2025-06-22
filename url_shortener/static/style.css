@@ -1,0 +1,40 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #0f172a, #000000);
+  background-attachment: fixed;
+}
+
+a {
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #67e8f9;
+}
+
+input:focus, button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(103, 232, 249, 0.5);
+}
+
+.glass-card {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.glass-card:hover {
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+}
+
+.qr-img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.qr-img:hover {
+  transform: scale(1.05);
+}

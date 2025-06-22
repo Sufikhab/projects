@@ -1,0 +1,39 @@
+/* style.css */
+
+body {
+  background: linear-gradient(to bottom right, #0f172a, #1e293b);
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.glass:hover {
+  transform: scale(1.02);
+}
+
+.glow-btn {
+  background-color: #0ea5e9;
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s;
+  box-shadow: 0 0 12px #0ea5e9;
+}
+
+.glow-btn:hover {
+  background-color: #38bdf8;
+  box-shadow: 0 0 20px #38bdf8;
+  cursor: pointer;
+}

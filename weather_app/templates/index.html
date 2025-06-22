@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Weather App - Lat/Lon</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 to-black">
+
+  <div class="glass max-w-md w-full mx-auto text-center">
+    <h1 class="text-3xl font-bold text-cyan-400 mb-6">🌍 Weather by Coordinates</h1>
+
+    <form method="POST" class="space-y-4">
+      <input
+        type="text"
+        name="latitude"
+        placeholder="Latitude (e.g. 13.08)"
+        class="w-full p-4 text-black rounded-xl focus:outline-none focus:ring-4 focus:ring-cyan-500"
+        required
+      />
+      <input
+        type="text"
+        name="longitude"
+        placeholder="Longitude (e.g. 80.27)"
+        class="w-full p-4 text-black rounded-xl focus:outline-none focus:ring-4 focus:ring-cyan-500"
+        required
+      />
+      <button type="submit" class="glow-btn w-full">
+        Get Weather
+      </button>
+    </form>
+
+    {% if error %}
+      <div class="text-red-400 font-semibold mt-4">{{ error }}</div>
+    {% endif %}
+
+    {% if weather %}
+      <div class="mt-6 bg-gray-800/50 p-6 rounded-xl shadow-lg text-left space-y-2">
+        <p><strong>📍 Location:</strong> {{ weather.city }}</p>
+        <p><strong>🌡 Temp:</strong> {{ weather.temperature }}°C</p>
+        <p><strong>🌥 Condition:</strong> {{ weather.description }}</p>
+        <p><strong>💧 Humidity:</strong> {{ weather.humidity }}%</p>
+        <p><strong>🌬 Wind:</strong> {{ weather.wind }} m/s</p>
+      </div>
+    {% endif %}
+  </div>
+
+</body>
+</html>

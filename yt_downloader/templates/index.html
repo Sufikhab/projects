@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Futuristic YouTube Downloader</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-black text-white min-h-screen flex items-center justify-center">
+
+  <div class="bg-gray-800 p-10 rounded-3xl shadow-2xl w-full max-w-lg space-y-6">
+    <h1 class="text-3xl font-bold text-center text-cyan-400">YouTube Downloader</h1>
+    
+    <input
+      id="urlInput"
+      type="text"
+      placeholder="Paste YouTube URL..."
+      class="w-full p-4 text-black rounded-xl focus:outline-none focus:ring-4 focus:ring-cyan-500"
+    />
+
+    <button
+      onclick="downloadVideo()"
+      class="w-full bg-cyan-500 hover:bg-cyan-600 transition-colors p-4 rounded-xl text-lg font-semibold shadow-xl"
+    >
+      Download
+    </button>
+
+    <div id="status" class="text-center text-lg mt-4"></div>
+  </div>
+
+  <script>
+    async function downloadVideo() {
+      const url = document.getElementById('urlInput').value;
+      const statusDiv = document.getElementById('status');
+      
+      statusDiv.textContent = "Downloading...";
+
+      const response = await fetch('/download', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ url })
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        statusDiv.textContent = result.message;
+        statusDiv.classList.add('text-green-400');
+      } else {
+        statusDiv.textContent = result.error;
+        statusDiv.classList.add('text-red-400');
+      }
+    }
+  </script>
+
+</body>
+</html>

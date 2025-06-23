@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Add Note{% endblock %}
+
+{% block content %}
+  <h2 class="title">Add a New Note</h2>
+
+  <form action="{{ url_for('add_note') }}" method="POST" class="form-glass">
+    <textarea name="note" placeholder="Write your secret note here..." required class="note-box"></textarea>
+    <button type="submit" class="submit-button">Save Secure Note</button>
+  </form>
+
+  <div class="navigation-links">
+    <a href="{{ url_for('index') }}">← Back to Notes</a> |
+    <a href="{{ url_for('logout') }}">Logout</a>
+  </div>
+{% endblock %}

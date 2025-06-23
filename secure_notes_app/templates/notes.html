@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Your Notes{% endblock %}
+
+{% block content %}
+  <h2>Welcome, {{ current_user.username }}</h2>
+
+  <form method="POST">
+    <textarea name="note" placeholder="Write your secret note here..." required></textarea>
+    <button type="submit">Save Note</button>
+  </form>
+
+  <h3>Your Encrypted Notes:</h3>
+  <ul>
+    {% for note in notes %}
+      <li>{{ note }}</li>
+    {% else %}
+      <li>No notes yet.</li>
+    {% endfor %}
+  </ul>
+
+  <a href="{{ url_for('logout') }}">Logout</a>
+{% endblock %}

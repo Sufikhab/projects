@@ -1,4 +1,0 @@
-os
-tkinter
-tkinterdnd2
-pyPDF2
